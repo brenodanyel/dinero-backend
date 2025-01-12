@@ -1,22 +1,25 @@
 {
-  "name": "url-shortener",
-  "private": true,
-  "version": "0.0.1",
-  "description": "Encore URL Shortener Tutorial",
-  "license": "MPL-2.0",
-  "type": "module",
-  "scripts": {
-    "test": "vitest"
-  },
-  "devDependencies": {
-    "@types/node": "^20.5.7",
-    "typescript": "^5.2.2",
-    "vitest": "^2.1.4"
-  },
-  "dependencies": {
-    "encore.dev": "^1.45.6"
-  },
-  "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "^4.13.0"
-  }
+	"name": "dinero",
+	"private": true,
+	"version": "0.0.1",
+	"description": "Encore Dinero Service",
+	"license": "MPL-2.0",
+	"type": "module",
+	"scripts": {
+		"postinstall": "npx prisma generate --schema=dinero/prisma/schema.prisma  ",
+		"test": "vitest"
+	},
+	"devDependencies": {
+		"@types/node": "^20.5.7",
+		"prisma": "^6.2.1",
+		"typescript": "^5.2.2",
+		"vitest": "^2.1.4"
+	},
+	"dependencies": {
+		"@prisma/client": "^6.2.1",
+		"encore.dev": "^1.45.6"
+	},
+	"optionalDependencies": {
+		"@rollup/rollup-linux-x64-gnu": "^4.13.0"
+	}
 }

@@ -1,0 +1,19 @@
+generator client {
+    provider      = "prisma-client-js"
+    binaryTargets = ["native", "debian-openssl-3.0.x"]
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = "postgresql://dinero-backend-73w2:shadow-cu1mssnk640u7sjsshcg@127.0.0.1:9500/dinero?sslmode=disable"
+}
+
+model Transacao {
+    id           String   @id @default(uuid(7))
+    no_transacao String
+    vl_transacao Int
+    dt_transacao DateTime
+    dt_criacao   DateTime @default(now())
+
+    @@map("transacoes")
+}
