@@ -18,6 +18,7 @@
 	},
 	"dependencies": {
 		"@prisma/client": "^6.2.1",
+		"dayjs": "^1.11.13",
 		"encore.dev": "^1.45.6"
 	},
 	"optionalDependencies": {
