@@ -6,7 +6,8 @@
 	"license": "MPL-2.0",
 	"type": "module",
 	"scripts": {
-		"postinstall": "npx prisma generate --schema=dinero/prisma/schema.prisma  ",
+		"postinstall": "npx prisma generate --schema=dinero/prisma/schema.prisma",
+		"generate-client": "encore gen client dinero-backend-73w2 --output=./api-client/client.ts --env=local",
 		"test": "vitest"
 	},
 	"devDependencies": {
