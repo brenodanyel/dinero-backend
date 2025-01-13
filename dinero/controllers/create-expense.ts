@@ -1,6 +1,7 @@
-import { api } from 'encore.dev/api'
+import { api, APIError } from 'encore.dev/api'
 import { prisma } from '../database'
 import { Min, MinLen, MaxLen } from 'encore.dev/validate'
+import { IExpense } from '../interfaces/expense'
 
 interface CreateTransationPayload {
   description: string & MinLen<1> & MaxLen<255>
@@ -10,10 +11,14 @@ interface CreateTransationPayload {
   value: number & Min<0>
 }
 
+interface CreateExpenseResponse {
+  data: IExpense
+}
+
 export const createExpense = api(
   { expose: true, method: 'POST', path: '/expenses' },
-  async (payload: CreateTransationPayload) => {
-    const created = await prisma.expense.create({
+  async (payload: CreateTransationPayload): Promise<CreateExpenseResponse> => {
+    const result = await prisma.expense.create({
       data: {
         description: payload.description,
         category: payload.category,
@@ -23,6 +28,8 @@ export const createExpense = api(
       },
     })
 
-    return created
+    return {
+      data: result,
+    }
   },
 )
