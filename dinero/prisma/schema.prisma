@@ -5,15 +5,17 @@ generator client {
 
 datasource db {
     provider = "postgresql"
-    url      = "postgresql://dinero-backend-73w2:shadow-cu1mssnk640u7sjsshcg@127.0.0.1:9500/dinero?sslmode=disable"
+    url      = env("DATABASE_URL")
 }
 
-model Transacao {
+model Expense {
     id           String   @id @default(uuid(7))
-    no_transacao String
-    vl_transacao Int
-    dt_transacao DateTime
-    dt_criacao   DateTime @default(now())
+    description  String
+    value        Int
+    date         DateTime
+    installments Int
+    category     String
+    createdAt    DateTime @default(now())
 
-    @@map("transacoes")
+    @@map("expenses")
 }
